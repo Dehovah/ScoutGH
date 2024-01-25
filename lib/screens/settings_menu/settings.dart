@@ -25,8 +25,7 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>
-        AppScaffold(
+    return Obx(() => AppScaffold(
           backgroundColor: AppColorConstants.backgroundColor,
           body: Column(
             children: [
@@ -71,16 +70,13 @@ class _SettingsState extends State<Settings> {
                               .setting.value!.enableDarkLightModeSwitch)
                             darkModeTile(),
                           if (_settingsController.setting.value!.iosAppLink !=
-                              null ||
+                                  null ||
                               _settingsController
-                                  .setting.value!.androidAppLink !=
+                                      .setting.value!.androidAppLink !=
                                   null)
                             addTileEvent(shareString.tr, () {
                               Share.share(
-                                  '${installThisCoolAppString
-                                      .tr}\n${_settingsController.setting.value!
-                                      .iosAppLink ?? ''}\n ${_settingsController
-                                      .setting.value!.androidAppLink ?? ''}');
+                                  '${installThisCoolAppString.tr}\n${_settingsController.setting.value!.iosAppLink ?? ''}\n ${_settingsController.setting.value!.androidAppLink ?? ''}');
                             }, false),
                           addTileEvent(logoutString.tr, () {
                             AppUtil.showNewConfirmationAlert(
@@ -105,9 +101,7 @@ class _SettingsState extends State<Settings> {
                                 });
                           }, false),
                           addTileEvent(createdByString.tr, () async {
-                            await launchUrl(
-                                Uri.parse(
-                                    'https://instagram.com/singhcoders/'));
+                            await launchUrl(Uri.parse('https://itdelux.com/'));
                           }, true),
                         ],
                       ),
@@ -168,8 +162,7 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             // const Spacer(),
-            Obx(() =>
-                FlutterSwitch(
+            Obx(() => FlutterSwitch(
                   inactiveColor: AppColorConstants.disabledColor,
                   activeColor: AppColorConstants.themeColor,
                   width: 50.0,

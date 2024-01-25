@@ -62,7 +62,7 @@ class LoginScreenState extends State<LoginScreen> {
                             top: 0,
                             bottom: 0,
                             child: Lottie.asset(
-                              'assets/lottie/syahi.json',
+                              'assets/lottie/sload.json',
                             ))
                       ],
                     )),

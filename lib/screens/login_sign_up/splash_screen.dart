@@ -1,11 +1,15 @@
-// import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:foap/helper/imports/common_import.dart';
-// import 'package:get/get.dart';
-// import 'package:local_auth/local_auth.dart';
-//
-// import '../../util/shared_prefs.dart';
-// import '../dashboard/loading.dart';
-//
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:foap/helper/imports/common_import.dart';
+import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../helper/imports/common_import.dart';
+import '../dashboard/loading.dart';
+import '../../util/shared_prefs.dart';
+import '../dashboard/loading.dart';
+
 // class SplashScreen extends StatefulWidget {
 //   const SplashScreen({Key? key}) : super(key: key);
 //
@@ -17,6 +21,8 @@
 //   late bool haveBiometricLogin = false;
 //   var localAuth = LocalAuthentication();
 //   RxInt bioMetricType = 0.obs;
+//
+//   get bgImages => null;
 //
 //   @override
 //   void initState() {
@@ -103,3 +109,31 @@
 //         ));
 //   }
 // }
+
+
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(Duration(seconds: 9),(){
+      Get.offAll(() => const LoadingScreen());
+    });
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Lottie.asset('assets/lottie/sload.json'),
+      ),
+    );
+  }
+}
+

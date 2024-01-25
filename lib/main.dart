@@ -16,7 +16,7 @@ import 'package:foap/screens/add_on/controller/event/event_controller.dart';
 import 'package:foap/screens/add_on/controller/relationship/relationship_controller.dart';
 import 'package:foap/screens/add_on/controller/relationship/relationship_search_controller.dart';
 import 'package:foap/controllers/live/live_users_controller.dart';
-import 'package:foap/screens/login_sign_up/ask_to_follow.dart';
+import 'package:foap/screens/login_sign_up/splash_screen.dart';
 import 'package:foap/screens/settings_menu/help_support_contorller.dart';
 import 'package:giphy_get/l10n.dart';
 import 'components/smart_text_field.dart';
@@ -173,7 +173,7 @@ Future<void> main() async {
   } else {
     runApp(Phoenix(
         child: const SocialifiedApp(
-      startScreen: AskToFollow(),
+      startScreen: SplashScreen(),
     )));
   }
 }

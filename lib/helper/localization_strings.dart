@@ -1373,15 +1373,17 @@ String sentYourFollowRequestString = 'sent you follow request';
 String commentedOnYourPostString = 'commented on your post';
 String likedYourPostString = 'liked your post';
 String adminAddedNewCompetitionString = 'Admin Added new competition';
-String adminRepliedOnYourSupportRequestString = 'Replied on your support request';
-String congratsYourVerificationIsApprovedString = 'Congratulations, Your verification request has been approved.';
+String adminRepliedOnYourSupportRequestString =
+    'Replied on your support request';
+String congratsYourVerificationIsApprovedString =
+    'Congratulations, Your verification request has been approved.';
 String shareOnlineStatusStaring = 'Share online status';
 String shareOnlineStatusMsgString =
     'If you don\'t share your last seen and online,you won\'t be able to see other people\'s last seen and online status also';
 
 String copyLinkString = 'Copy link';
 
-String createdByString = 'Created by SinghCoders';
+String createdByString = 'Developed by ITDelux';
 String bannedUsersString = 'Banned users';
 String hostString = 'Host';
 String moderatorString = 'Moderator';
