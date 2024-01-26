@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>787780064793-nqjbtv3f2no80jm578dmnaefgtf0cnbp.apps.googleusercontent.com</string>
+	<string>459248909333-sm2bt6qk2cedic85enn88vj2p4t4mg6s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.787780064793-nqjbtv3f2no80jm578dmnaefgtf0cnbp</string>
+	<string>com.googleusercontent.apps.459248909333-sm2bt6qk2cedic85enn88vj2p4t4mg6s</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>459248909333-m3lmq1th214f2k819nfcqkui46mcu3sp.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCsekV6f6sI0jV-oW1SPS_dfj9bbsxJ5bg</string>
+	<string>AIzaSyBiz-Pqs7lW0YqYVQMV4Bxon87OfQVfoW4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>787780064793</string>
+	<string>459248909333</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.jasspj.sayhi</string>
+	<string>com.itdelux.scoutgh</string>
 	<key>PROJECT_ID</key>
-	<string>sayhi-7baeb</string>
+	<string>scoutgh-ef972</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sayhi-7baeb.appspot.com</string>
+	<string>scoutgh-ef972.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:787780064793:ios:cc0450f243ec4f84c33c88</string>
+	<string>1:459248909333:ios:e723fafdced5047f51621c</string>
 	<key>DATABASE_URL</key>
-	<string>https://sayhi-7baeb-default-rtdb.firebaseio.com</string>
+	<string>https://scoutgh-ef972-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
