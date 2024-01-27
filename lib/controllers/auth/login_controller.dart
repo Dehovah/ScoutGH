@@ -112,6 +112,7 @@ class LoginController extends GetxController {
     required String email,
     required String name,
     required String password,
+    required String userName,
   }) {
     if (FormValidator().isTextEmpty(name)) {
       showErrorMessage(
@@ -129,11 +130,16 @@ class LoginController extends GetxController {
       showErrorMessage(
         pleaseEnterPasswordString.tr,
       );
+    } else if (FormValidator().isTextEmpty(userName)) {
+      showErrorMessage(
+        pleaseEnterValidUserNameString.tr,
+      );
     } else {
       AuthApi.register(
           email: email,
           name: name,
           password: password,
+          userName: userName,
           successCallback: (token) {
             Get.to(() => VerifyRegistrationOTP(
                   // isVerifyingEmail: true,

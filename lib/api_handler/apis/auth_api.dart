@@ -157,6 +157,7 @@ class AuthApi {
       {required String email,
       required String name,
       required String password,
+      required String userName,
       required Function(String) successCallback}) async {
     String? fcmToken = await SharedPrefs().getFCMToken();
     String? voipToken = await SharedPrefs().getVoipToken();

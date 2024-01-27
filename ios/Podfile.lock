@@ -226,6 +226,8 @@ PODS:
   - flutter_login_facebook (1.9.0):
     - FBSDKLoginKit (= 16.2.1)
     - Flutter
+  - flutter_native_splash (0.0.1):
+    - Flutter
   - flutter_ringtone_player (0.0.1):
     - Flutter
   - flutter_video_info (1.1.0):
@@ -532,6 +534,7 @@ DEPENDENCIES:
   - flutter_keyboard_visibility (from `.symlinks/plugins/flutter_keyboard_visibility/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_login_facebook (from `.symlinks/plugins/flutter_login_facebook/ios`)
+  - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - flutter_ringtone_player (from `.symlinks/plugins/flutter_ringtone_player/ios`)
   - flutter_video_info (from `.symlinks/plugins/flutter_video_info/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
@@ -691,6 +694,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_login_facebook:
     :path: ".symlinks/plugins/flutter_login_facebook/ios"
+  flutter_native_splash:
+    :path: ".symlinks/plugins/flutter_native_splash/ios"
   flutter_ringtone_player:
     :path: ".symlinks/plugins/flutter_ringtone_player/ios"
   flutter_video_info:
@@ -789,7 +794,7 @@ SPEC CHECKSUMS:
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   facebook_audience_network: bb22bdda913d419d8c3247c9570bda4563302417
   FBAEMKit: 4763aa27b8f69eb9d2c274189e91388de1dbd88a
-  FBAudienceNetwork: 03e273f66b70756be7d060927111af97b7641b06
+  FBAudienceNetwork: 4d6223a9a88a22e9dca8c9e6c1829a8745b86228
   FBSDKCoreKit: 40ae989ca1da1bbeba56acd4671dde64ad415506
   FBSDKCoreKit_Basics: 1257d71d2d692661290bf2af4bea5f9a101387af
   FBSDKLoginKit: bf4f96d0ce475de2da4b1800ce150bd8a6f120f3
@@ -808,7 +813,7 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 9bc34a98d2e0237e1b121915120d4d48ddcf301e
   FirebaseSessions: e5f4caa188dc8bc6142abc974355be75b042215e
   fl_location: 68b4a6c4aad2a453493ff66f196e0748280cf43e
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_archive: 1805fdd3a695fd284b43edb53dc35ca843fb761c
   flutter_braintree: 72276002464c36b1d5a6266fbdb94c0b600e62fd
   flutter_callkit_incoming: 417dd1b46541cdd5d855ad795ccbe97d1c18155e
@@ -818,9 +823,10 @@ SPEC CHECKSUMS:
   flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   flutter_login_facebook: 1e096602eae99ee2be7ab4b3ea4cfcf667eab2f0
+  flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
   flutter_ringtone_player: 15eba85187230b87b2512f0e1b92225618bc03e7
   flutter_video_info: a932e1b0da369bba95c3a14b7f61d5f8b0d03280
-  fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
+  fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   geocoding_ios: a389ea40f6f548de6e63006a2e31bf66ff80769a
   Google-Mobile-Ads-SDK: 58b4fda3f9758fc1ed210aa5cf7777b5eb55d47e
@@ -869,7 +875,7 @@ SPEC CHECKSUMS:
   razorpay-pod: df3aa440969489d242c40ec606db9a0c7095743f
   razorpay_flutter: 84b3bfd206ae9c9c2a9ba585524a1b3d8102b6c1
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  realm: 07158ed808cb63bd7a8d4b4c3f1792767d123530
+  realm: 76ad31f96d0fc36964128ee5d344bd8c068136f1
   record_darwin: 1f6619f2abac4d1ca91d3eeab038c980d76f1517
   SDWebImage: f9258c58221ed854cfa0e2b80ee4033710b1c6d3
   SDWebImageWebPCoder: 633b813fca24f1de5e076bcd7f720c038b23892b
@@ -899,4 +905,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 09a3e6051732812bbb1aecb3f29c84885e25921a
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.14.3
