@@ -25,42 +25,44 @@ class _RequestVerificationState extends State<RequestVerification> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      backgroundColor: AppColorConstants.backgroundColor,
-      body: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).requestFocus(FocusNode());
-          },
-          child: Obx(() => SizedBox(
-                height: Get.height,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      backNavigationBarWithTrailingWidget(
-                        title: requestVerificationString.tr,
-                        widget: ThemeIconWidget(ThemeIcon.bookMark)
-                            .ripple(() {
-                          if (_requestVerificationController
-                              .verificationRequests.isNotEmpty) {
-                            Get.to(() => const RequestVerificationList());
-                          }
-                        }),
-                      ),
-                      // divider(context: context).tP8,
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      _requestVerificationController.isApproved ||
-                              _userProfileManager.user.value!.isVerified
-                          ? alreadyVerifiedView()
-                          : _requestVerificationController
-                                  .isVerificationInProcess
-                              ? verificationPendingView()
-                              : requestVerification(),
-                    ],
+    return Obx(()=>
+      AppScaffold(
+        backgroundColor: AppColorConstants.backgroundColor,
+        body: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
+            },
+            child: SizedBox(
+                  height: Get.height,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        backNavigationBarWithTrailingWidget(
+                          title: requestVerificationString.tr,
+                          widget: ThemeIconWidget(ThemeIcon.bookMark)
+                              .ripple(() {
+                            if (_requestVerificationController
+                                .verificationRequests.isNotEmpty) {
+                              Get.to(() => const RequestVerificationList());
+                            }
+                          }),
+                        ),
+                        // divider(context: context).tP8,
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        _requestVerificationController.isApproved ||
+                                _userProfileManager.user.value!.isVerified
+                            ? alreadyVerifiedView()
+                            : _requestVerificationController
+                                    .isVerificationInProcess
+                                ? verificationPendingView()
+                                : requestVerification(),
+                      ],
+                    ),
                   ),
-                ),
-              ))),
+                )),
+      ),
     );
   }
 
@@ -161,14 +163,15 @@ class _RequestVerificationState extends State<RequestVerification> {
           child: Column(
             children: [
               Heading3Text(
-                applyVerificationString.tr,
+                "Verification",
                 weight: TextWeight.semiBold,
               ),
               const SizedBox(
                 height: 10,
               ),
               BodyLargeText(
-                verifiedAccountSubtitleString.tr,
+                // verifiedAccountSubtitleString.tr,
+                "You need to verify your account. Verified accounts have blue checkmark to confirm your category.",
                 textAlign: TextAlign.center,
               ).hP25,
               const SizedBox(
@@ -204,22 +207,22 @@ class _RequestVerificationState extends State<RequestVerification> {
                         value: _requestVerificationController
                             .documentType.value.text,
                         options: [
-                          drivingLicenseString.tr,
+                          scoutLicenseString.tr,
                           passportString.tr,
-                          panCardString.tr,
+                          ghanaCardString.tr,
                           otherString.tr
                         ],
                         onChanged: (String value) {
-                          if (value == drivingLicenseString.tr) {
+                          if (value == scoutLicenseString.tr) {
                             _requestVerificationController
                                 .setSelectedDocumentType(
-                                    drivingLicenseString.tr);
+                                scoutLicenseString.tr);
                           } else if (value == passportString.tr) {
                             _requestVerificationController
                                 .setSelectedDocumentType(passportString.tr);
-                          } else if (value == panCardString.tr) {
+                          } else if (value == ghanaCardString.tr) {
                             _requestVerificationController
-                                .setSelectedDocumentType(panCardString.tr);
+                                .setSelectedDocumentType(ghanaCardString.tr);
                           } else if (value == otherString.tr) {
                             _requestVerificationController
                                 .setSelectedDocumentType(otherString.tr);
@@ -227,7 +230,7 @@ class _RequestVerificationState extends State<RequestVerification> {
                         },
                         // controller:
                         // _requestVerificationController.documentType.value,
-                      )),
+                      ),),
                   const SizedBox(
                     height: 20,
                   ),

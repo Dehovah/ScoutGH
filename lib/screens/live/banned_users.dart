@@ -72,7 +72,7 @@ class _BannedUsersState extends State<BannedUsers> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    const SizedBox(
                             height: 55,
                             width: double.infinity,
                             child: BodyLargeText('Remove Ban'))
@@ -80,7 +80,7 @@ class _BannedUsersState extends State<BannedUsers> {
                       print('Remove Ban');
                       unbanUser(user);
                     }),
-                    Container(
+                    SizedBox(
                             height: 55,
                             width: double.infinity,
                             child: BodyLargeText(cancelString.tr))

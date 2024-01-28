@@ -882,9 +882,9 @@ String inProcessingString = 'In processing';
 String cancelledString = 'Cancelled';
 String approvedString = 'Approved';
 
-String drivingLicenseString = 'Driving license';
+String scoutLicenseString = 'Scout license';
 String passportString = 'Passport';
-String panCardString = 'Pan card';
+String ghanaCardString = 'Ghana card';
 String otherString = 'Other';
 String messageToReviewerString = 'Message to reviewer';
 String uploadFrontAndBackString = 'Upload both front and back side of document';

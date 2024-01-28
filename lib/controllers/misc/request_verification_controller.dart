@@ -1,5 +1,6 @@
 import 'package:foap/api_handler/apis/profile_api.dart';
 import 'package:foap/helper/imports/common_import.dart';
+import 'package:foap/helper/imports/dashboard_imports.dart';
 import 'package:foap/model/verification_request_model.dart';
 
 import 'package:intl/intl.dart';
@@ -120,7 +121,7 @@ class RequestVerificationController extends GetxController {
 
           clear();
           Timer(const Duration(seconds: 2), () {
-            Get.back();
+            Get.offAll(()=>DashboardScreen());
           });
         });
   }

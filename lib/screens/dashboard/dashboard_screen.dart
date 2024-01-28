@@ -3,12 +3,18 @@ import 'package:foap/helper/imports/common_import.dart';
 import 'package:foap/screens/post/watch_videos.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import '../../components/force_update_view.dart';
+import '../../controllers/misc/request_verification_controller.dart';
+import '../../controllers/profile/profile_controller.dart';
 import '../../main.dart';
 import '../add_on/ui/reel/reels.dart';
 import '../home_feed/home_feed_screen.dart';
+import '../login_sign_up/set_profile_category_type.dart';
 import '../profile/my_profile.dart';
+import '../settings_menu/account_verification/request_verification.dart';
 import '../settings_menu/settings_controller.dart';
 import 'explore.dart';
+import 'package:foap/helper/imports/setting_imports.dart';
+
 
 class DashboardController extends GetxController {
   RxInt currentIndex = 0.obs;
@@ -32,14 +38,36 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class DashboardState extends State<DashboardScreen> {
+  final RequestVerificationController _requestVerificationController =
+  RequestVerificationController();
+
+  final  ProfileController _profileController = Get.find();
   final DashboardController _dashboardController = Get.find();
   final SettingsController _settingsController = Get.find();
 
   List<Widget> widgets = [];
   bool hasPermission = false;
+  void _checkUserStatus(){
+    if(_profileController.user.value!.profileCategoryTypeName == "Other") {
+      Get.to(()=>const SetProfileCategoryType(isFromSignup: false));
+    }else if(_profileController.user.value!.profileCategoryTypeName != "User" ){
+      // print("Processing");
+      // print(_requestVerificationController.verificationRequests.value);
+      // print(_requestVerificationController.isVerificationInProcess);
+      // print(_requestVerificationController.isApproved);
+      if(!_requestVerificationController.isVerificationInProcess && !_requestVerificationController.isApproved){
+        Get.to(() => const RequestVerification());
+      }
+    }
+
+
+  }
+
+
 
   @override
   void initState() {
+
     isAnyPageInStack = true;
 
     widgets = [
@@ -53,7 +81,11 @@ class DashboardState extends State<DashboardScreen> {
         showBack: false,
       ),
     ];
-
+    // _requestVerificationController.getVerificationRequests();
+    // Future.delayed(Duration(seconds:7),(){
+    //
+    //   _checkUserStatus();
+    // });
     super.initState();
   }
 
@@ -77,6 +109,7 @@ class DashboardState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // _checkUserStatus();
     return Obx(() => _dashboardController.isLoading.value == true
         ? SizedBox(
             height: Get.height,

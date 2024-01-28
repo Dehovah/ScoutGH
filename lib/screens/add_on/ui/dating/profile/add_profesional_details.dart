@@ -60,17 +60,17 @@ class AddProfessionalDetailsState extends State<AddProfessionalDetails> {
                     addProfessionalDetailString.tr,
                   ).vP25,
                   AppTextField(
-                    label: qualificationString.tr,
-                    hintText: 'Master in computer',
+                    label: "Sports played",
+                    hintText: 'Football, Basketball ...',
                     controller: qualificationController,
                   ).bP25,
                   AppTextField(
-                    hintText: 'Entrepreneur',
-                    label: occupationString.tr,
+                    hintText: 'Striker, Defence ...',
+                    label: "Position played",
                     controller: occupationController,
                   ).bP25,
-                  BodySmallText(
-                    workExperienceString.tr,
+                  const BodySmallText(
+                    "Playing since",
                   ).bP8,
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

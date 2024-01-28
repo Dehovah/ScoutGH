@@ -2,16 +2,20 @@ import 'package:foap/helper/imports/chat_imports.dart';
 import 'package:foap/helper/imports/common_import.dart';
 import 'package:foap/helper/imports/story_imports.dart';
 import 'package:foap/screens/home_feed/story_uploader.dart';
+import 'package:foap/screens/settings_menu/account_verification/request_verification.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_polls/flutter_polls.dart';
 import '../../components/post_card/post_card.dart';
+import '../../controllers/misc/request_verification_controller.dart';
 import '../../controllers/post/add_post_controller.dart';
 import '../../controllers/live/agora_live_controller.dart';
 import '../../controllers/home/home_controller.dart';
+import '../../controllers/profile/profile_controller.dart';
 import '../../model/call_model.dart';
 import '../../model/post_model.dart';
 import '../add_on/model/polls_model.dart';
 import '../dashboard/dashboard_screen.dart';
+import '../login_sign_up/set_profile_category_type.dart';
 import '../post/add_post_screen.dart';
 import '../settings_menu/settings_controller.dart';
 
@@ -25,7 +29,11 @@ class HomeFeedScreen extends StatefulWidget {
 class HomeFeedState extends State<HomeFeedScreen> {
   final HomeController _homeController = Get.find();
   final AddPostController _addPostController = Get.find();
+  final  ProfileController _profileController = Get.find();
   final AgoraLiveController _agoraLiveController = Get.find();
+
+  final RequestVerificationController _requestVerificationController =
+  RequestVerificationController();
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   final SettingsController _settingsController = Get.find();
@@ -35,13 +43,39 @@ class HomeFeedState extends State<HomeFeedScreen> {
   String? selectedValue;
   int pollFrequencyIndex = 10;
 
+  void _checkUserStatus(){
+    if(_profileController.user.value!.profileCategoryTypeName == "Other") {
+      Get.to(()=>const SetProfileCategoryType(isFromSignup: false));
+    }else if(_profileController.user.value!.profileCategoryTypeName != "User" ){
+      // print("Processing");
+      // print(_requestVerificationController.verificationRequests.value);
+      // print(_requestVerificationController.isVerificationInProcess);
+      // print(_requestVerificationController.isApproved);
+      if(_requestVerificationController.isVerificationInProcess == false && _requestVerificationController.isApproved == false){
+        Get.to(() => const RequestVerification());
+      }
+    }
+
+
+  }
+
   @override
   void initState() {
     super.initState();
 
+    _profileController.getMyProfile();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       loadData();
       _homeController.loadQuickLinksAccordingToSettings();
+
+    });
+    _requestVerificationController.getVerificationRequests();
+    Future.delayed(Duration(seconds:15),(){
+
+        _checkUserStatus();
+    });
+    setState(() {
+
     });
   }
 
@@ -95,63 +129,66 @@ class HomeFeedState extends State<HomeFeedScreen> {
             const SizedBox(
               height: 55,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Heading3Text(
-                  AppConfigConstants.appName,
-                  weight: TextWeight.semiBold,
-                  color: AppColorConstants.themeColor,
-                ),
-                const Spacer(),
-                SizedBox(
+            Obx(()=>
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Heading3Text(
+                    AppConfigConstants.appName,
+                    weight: TextWeight.semiBold,
+                    color: AppColorConstants.themeColor,
+                  ),
+                  const Spacer(),
+                  if(_profileController.user.value != null && _profileController.user.value!.profileCategoryTypeName != "User")
+                  SizedBox(
+                      height: 35,
+                      width: 35,
+                      child: ThemeIconWidget(
+                        ThemeIcon.plus,
+                        size: 25,
+                      )).ripple(() {
+                    Future.delayed(
+                      Duration.zero,
+                      () => showGeneralDialog(
+                          context: context,
+                          pageBuilder: (context, animation, secondaryAnimation) =>
+                              const AddPostScreen(
+                                postType: PostType.basic,
+                              )),
+                    );
+                  }),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  SizedBox(
                     height: 35,
                     width: 35,
-                    child: ThemeIconWidget(
-                      ThemeIcon.plus,
-                      size: 25,
-                    )).ripple(() {
-                  Future.delayed(
-                    Duration.zero,
-                    () => showGeneralDialog(
-                        context: context,
-                        pageBuilder: (context, animation, secondaryAnimation) =>
-                            const AddPostScreen(
-                              postType: PostType.basic,
-                            )),
-                  );
-                }),
-                const SizedBox(
-                  width: 20,
-                ),
-                SizedBox(
-                  height: 35,
-                  width: 35,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      ThemeIconWidget(
-                        ThemeIcon.chat,
-                        size: 25,
-                      ).ripple(() {
-                        Get.to(() => const ChatHistory());
-                      }),
-                      Obx(() => _dashboardController.unreadMsgCount.value == 0
-                          ? Container()
-                          : Positioned(
-                              top: 0,
-                              right: 5,
-                              child: Container(
-                                color: AppColorConstants.red,
-                                height: 10,
-                                width: 10,
-                              ).circular,
-                            ))
-                    ],
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        ThemeIconWidget(
+                          ThemeIcon.chat,
+                          size: 25,
+                        ).ripple(() {
+                          Get.to(() => const ChatHistory());
+                        }),
+                        Obx(() => _dashboardController.unreadMsgCount.value == 0
+                            ? Container()
+                            : Positioned(
+                                top: 0,
+                                right: 5,
+                                child: Container(
+                                  color: AppColorConstants.red,
+                                  height: 10,
+                                  width: 10,
+                                ).circular,
+                              ))
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ).hp(20),
+                ],
+              ).hp(20),
+            ),
             const SizedBox(
               height: 20,
             ),

@@ -158,17 +158,13 @@ dependencies:
   flutter_stripe: ^10.0.0
   flutter_easyloading: ^3.0.5
 
-  flutter_native_splash: ^2.2.19
+  flutter_native_splash: ^2.3.9
   dropdown_button2: ^2.3.9
   flutter_launcher_icons: ^0.13.1
-#  flutter_stripe:
-#    git:
-#      url: https://github.com/flutter-stripe/flutter_stripe/
-#      path: packages/stripe/
-#      ref: main
+
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/lottie/ssload.gif
+  image: assets/launcher_icon.png
   android: true
   ios: true
 

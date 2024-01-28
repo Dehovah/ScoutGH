@@ -314,7 +314,7 @@ class _FlutterStoryViewState extends State<FlutterStoryView>
               ),
             ),
 
-            TransparentGradientView(),
+            const TransparentGradientView(),
 
             /// Story indicator which plays with timer, progress and total story Items
             /// check out widget in widgets dir.

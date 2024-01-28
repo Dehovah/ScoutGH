@@ -59,7 +59,7 @@ class _SocialLoginState extends State<SocialLogin> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         widget.hidePhoneLogin == false
             ? Container(
@@ -92,6 +92,7 @@ class _SocialLoginState extends State<SocialLogin> {
                 ))).round(10).ripple(() {
                 Get.offAll(() => const LoginScreen());
               }),
+        SizedBox(width: 20),
         Container(
             height: 40,
             width: 40,
@@ -121,18 +122,18 @@ class _SocialLoginState extends State<SocialLogin> {
             _handleAppleSignIn();
             // Get.to(() => const InstagramView());
           }),
-        Container(
-            height: 40,
-            width: 40,
-            color: AppColorConstants.themeColor.withOpacity(0.2),
-            child: Center(
-                child: Image.asset(
-              'assets/facebook.png',
-              height: 20,
-              width: 20,
-            ))).round(10).ripple(() {
-          fbSignInAction();
-        }),
+        // Container(
+        //     height: 40,
+        //     width: 40,
+        //     color: AppColorConstants.themeColor.withOpacity(0.2),
+        //     child: Center(
+        //         child: Image.asset(
+        //       'assets/facebook.png',
+        //       height: 20,
+        //       width: 20,
+        //     ))).round(10).ripple(() {
+        //   fbSignInAction();
+        // }),
       ],
     );
   }

@@ -19,6 +19,7 @@ import '../../controllers/chat_and_call/chat_detail_controller.dart';
 import '../../controllers/chat_and_call/select_user_for_chat_controller.dart';
 import '../../controllers/home/home_controller.dart';
 import '../../controllers/post/comments_controller.dart';
+import '../../controllers/profile/profile_controller.dart';
 import '../../screens/post/liked_by_users.dart';
 import '../../controllers/post/promotion_controller.dart';
 import '../../screens/chat/chat_detail.dart';
@@ -37,6 +38,7 @@ class PostMediaTile extends StatelessWidget {
   final PostCardController postCardController = Get.find();
   final HomeController homeController = Get.find();
 
+  final  ProfileController _profileController = Get.find();
   final PostModel model;
   final bool isSharedPostMedia;
 
@@ -499,15 +501,15 @@ class PostCardState extends State<PostCard> {
                   ).ripple(() {
                     Get.to(() => ViewPostInsights(post: widget.model));
                   }),
-                  AppThemeButton(
-                      text: boostPost.tr,
-                      cornerRadius: 5,
-                      height: 36,
-                      // width: 80,
-                      onPress: () {
-                        _promotionController.setPromotingPost(widget.model);
-                        Get.to(() => PostPromotionScreen());
-                      })
+                  // AppThemeButton(
+                  //     text: boostPost.tr,
+                  //     cornerRadius: 5,
+                  //     height: 36,
+                  //     // width: 80,
+                  //     onPress: () {
+                  //       _promotionController.setPromotingPost(widget.model);
+                  //       Get.to(() => PostPromotionScreen());
+                  //     })
                 ],
               ).hp(DesignConstants.horizontalPadding),
             ),
@@ -694,32 +696,32 @@ class PostCardState extends State<PostCard> {
               builder: (context) =>
                   FractionallySizedBox(heightFactor: 0.95, child: sharePost()));
         }),
-      if (!widget.model.isMyPost)
-        Row(
-          children: [
-            ThemeIconWidget(
-              ThemeIcon.gift,
-              size: 15,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            BodyMediumText(giftString)
-          ],
-        ).ripple(() {
-          showModalBottomSheet<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return FractionallySizedBox(
-                    heightFactor: 0.8,
-                    child: GiftsPageView(giftSelectedCompletion: (gift) {
-                      Get.back();
-                      homeController.sendPostGift(
-                          gift, widget.model.user.id, widget.model.id);
-                      Get.back();
-                    }));
-              });
-        })
+      // if (!widget.model.isMyPost)
+      //   Row(
+      //     children: [
+      //       ThemeIconWidget(
+      //         ThemeIcon.gift,
+      //         size: 15,
+      //       ),
+      //       const SizedBox(
+      //         width: 10,
+      //       ),
+      //       BodyMediumText(giftString)
+      //     ],
+      //   ).ripple(() {
+      //     showModalBottomSheet<void>(
+      //         context: context,
+      //         builder: (BuildContext context) {
+      //           return FractionallySizedBox(
+      //               heightFactor: 0.8,
+      //               child: GiftsPageView(giftSelectedCompletion: (gift) {
+      //                 Get.back();
+      //                 homeController.sendPostGift(
+      //                     gift, widget.model.user.id, widget.model.id);
+      //                 Get.back();
+      //               }));
+      //         });
+      //   })
 
       // const Spacer(),
       // viewGifts(),

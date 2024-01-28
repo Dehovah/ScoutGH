@@ -72,37 +72,37 @@ class UpdateProfileState extends State<UpdateProfile> {
                     });
                   }),
                   divider().vP16,
-                  Row(
-                    children: [
-                      BodyLargeText(
-                        categoryString.tr,
-                        weight: TextWeight.medium,
-                      ),
-                      const Spacer(),
-                      Obx(() => profileController.user.value != null
-                          ? BodyMediumText(
-                              profileController
-                                  .user.value!.profileCategoryTypeName,
-                            )
-                          : Container()),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      ThemeIconWidget(
-                        ThemeIcon.edit,
-                        color: AppColorConstants.iconColor,
-                        size: 15,
-                      )
-                    ],
-                  ).ripple(() {
-                    Get.to(() => const SetProfileCategoryType(
-                              isFromSignup: false,
-                            ))!
-                        .then((value) {
-                      reloadData();
-                    });
-                  }),
-                  divider().vP16,
+                  // Row(
+                  //   children: [
+                  //     BodyLargeText(
+                  //       categoryString.tr,
+                  //       weight: TextWeight.medium,
+                  //     ),
+                  //     const Spacer(),
+                  //     Obx(() => profileController.user.value != null
+                  //         ? BodyMediumText(
+                  //             profileController
+                  //                 .user.value!.profileCategoryTypeName,
+                  //           )
+                  //         : Container()),
+                  //     const SizedBox(
+                  //       width: 20,
+                  //     ),
+                  //     ThemeIconWidget(
+                  //       ThemeIcon.edit,
+                  //       color: AppColorConstants.iconColor,
+                  //       size: 15,
+                  //     )
+                  //   ],
+                  // ).ripple(() {
+                  //   Get.to(() => const SetProfileCategoryType(
+                  //             isFromSignup: false,
+                  //           ))!
+                  //       .then((value) {
+                  //     reloadData();
+                  //   });
+                  // }),
+                  // divider().vP16,
                   if (profileController.user.value!.accountCreatedWith == 1)
                     Column(
                       children: [
@@ -158,31 +158,31 @@ class UpdateProfileState extends State<UpdateProfile> {
                     });
                   }),
                   divider().vP16,
-                  Row(
-                    children: [
-                      BodyLargeText(paymentDetailString.tr,
-                          weight: TextWeight.medium),
-                      const Spacer(),
-                      Obx(() => profileController.user.value != null
-                          ? BodyMediumText(
-                              profileController.user.value!.paypalId ?? '',
-                            )
-                          : Container()),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      ThemeIconWidget(
-                        ThemeIcon.edit,
-                        color: AppColorConstants.iconColor,
-                        size: 15,
-                      )
-                    ],
-                  ).ripple(() {
-                    Get.to(() => const ChangePaypalId())!.then((value) {
-                      reloadData();
-                    });
-                  }),
-                  divider().vP16,
+                  // Row(
+                  //   children: [
+                  //     BodyLargeText(paymentDetailString.tr,
+                  //         weight: TextWeight.medium),
+                  //     const Spacer(),
+                  //     Obx(() => profileController.user.value != null
+                  //         ? BodyMediumText(
+                  //             profileController.user.value!.paypalId ?? '',
+                  //           )
+                  //         : Container()),
+                  //     const SizedBox(
+                  //       width: 20,
+                  //     ),
+                  //     ThemeIconWidget(
+                  //       ThemeIcon.edit,
+                  //       color: AppColorConstants.iconColor,
+                  //       size: 15,
+                  //     )
+                  //   ],
+                  // ).ripple(() {
+                  //   Get.to(() => const ChangePaypalId())!.then((value) {
+                  //     reloadData();
+                  //   });
+                  // }),
+                  // divider().vP16,
                   Row(
                     children: [
                       BodyLargeText(locationString.tr,
@@ -282,45 +282,45 @@ class UpdateProfileState extends State<UpdateProfile> {
                     });
                   }),
                   divider().vP16,
-                  Row(
-                    children: [
-                      BodyLargeText(personalDetailsString.tr,
-                          weight: TextWeight.medium),
-                      const Spacer(),
-                      ThemeIconWidget(
-                        ThemeIcon.edit,
-                        color: AppColorConstants.iconColor,
-                        size: 15,
-                      )
-                    ],
-                  ).ripple(() {
-                    Get.to(() =>
-                            const AddPersonalInfo(isSettingProfile: false))!
-                        .then((value) {
-                      reloadData();
-                    });
-                  }),
-                  divider().vP16,
-                  Row(
-                    children: [
-                      BodyLargeText(interestsString.tr,
-                          weight: TextWeight.medium),
-                      const Spacer(),
-                      ThemeIconWidget(
-                        ThemeIcon.edit,
-                        color: AppColorConstants.iconColor,
-                        size: 15,
-                      )
-                    ],
-                  ).ripple(() {
-                    Get.to(() => const AddInterests(
-                              isSettingProfile: false,
-                            ))!
-                        .then((value) {
-                      reloadData();
-                    });
-                  }),
-                  divider().vP16,
+                  // Row(
+                  //   children: [
+                  //     BodyLargeText(personalDetailsString.tr,
+                  //         weight: TextWeight.medium),
+                  //     const Spacer(),
+                  //     ThemeIconWidget(
+                  //       ThemeIcon.edit,
+                  //       color: AppColorConstants.iconColor,
+                  //       size: 15,
+                  //     )
+                  //   ],
+                  // ).ripple(() {
+                  //   Get.to(() =>
+                  //           const AddPersonalInfo(isSettingProfile: false))!
+                  //       .then((value) {
+                  //     reloadData();
+                  //   });
+                  // }),
+                  // divider().vP16,
+                  // Row(
+                  //   children: [
+                  //     BodyLargeText(interestsString.tr,
+                  //         weight: TextWeight.medium),
+                  //     const Spacer(),
+                  //     ThemeIconWidget(
+                  //       ThemeIcon.edit,
+                  //       color: AppColorConstants.iconColor,
+                  //       size: 15,
+                  //     )
+                  //   ],
+                  // ).ripple(() {
+                  //   Get.to(() => const AddInterests(
+                  //             isSettingProfile: false,
+                  //           ))!
+                  //       .then((value) {
+                  //     reloadData();
+                  //   });
+                  // }),
+                  // divider().vP16,
                   Row(
                     children: [
                       BodyLargeText(professionalString.tr,

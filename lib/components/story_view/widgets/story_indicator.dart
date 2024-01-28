@@ -23,7 +23,7 @@ class StoryIndicator extends StatefulWidget {
   // Padding of indicator
   final EdgeInsets? indicatorPadding;
 
-  StoryIndicator({
+  const StoryIndicator({
     Key? key,
     required this.storyItemsLen,
     required this.currentItemIndex,
@@ -67,7 +67,7 @@ class _StoryIndicatorState extends State<StoryIndicator> {
           child: Padding(
             padding: const EdgeInsets.only(right: 4.0),
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(4)),
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
               child: LinearProgressIndicator(
                 minHeight: widget.indicatorHeight ?? 2,
                 value: indicatorValue,

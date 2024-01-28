@@ -94,7 +94,7 @@ class InvalidPurchaseView extends StatelessWidget {
               height: Get.height * 0.03,
             ),
             Heading3Text(
-              'Please buy the original code from codecanyon.net to use this app',
+              'ITDelux is currently updating the Application',
               weight: TextWeight.regular,
               textAlign: TextAlign.center,
             ).hP25,

@@ -15,7 +15,7 @@ class SetProfileCategoryType extends StatefulWidget {
 
 class _SetProfileCategoryTypeState extends State<SetProfileCategoryType> {
   final SetProfileCategoryController _setProfileCategoryController =
-      SetProfileCategoryController();
+  SetProfileCategoryController();
   final ProfileController profileController = Get.find();
   final UserProfileManager _userProfileManager = Get.find();
 
@@ -35,7 +35,7 @@ class _SetProfileCategoryTypeState extends State<SetProfileCategoryType> {
     return AppScaffold(
       backgroundColor: AppColorConstants.backgroundColor,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           if (widget.isFromSignup == true)
             const SizedBox(
@@ -52,12 +52,12 @@ class _SetProfileCategoryTypeState extends State<SetProfileCategoryType> {
           if (widget.isFromSignup == true)
             Heading3Text(
               setProfileCategoryTypeString.tr,
-            ),
+            ).hp(DesignConstants.horizontalPadding),
           const SizedBox(
             height: 20,
           ),
           BodySmallText(
-            setProfileCategoryTypeSubHeadingString.tr,
+            "Category will help people identify accounts like yours. This cannot be changed",
             textAlign: TextAlign.center,
             weight: TextWeight.medium,
           ).hp(DesignConstants.horizontalPadding),
@@ -71,7 +71,10 @@ class _SetProfileCategoryTypeState extends State<SetProfileCategoryType> {
                   itemCount: _setProfileCategoryController.categories.length,
                   itemBuilder: (ctx, index) {
                     CategoryModel category =
-                        _setProfileCategoryController.categories[index];
+                    _setProfileCategoryController.categories[index];
+                    if(category.name == 'User'){
+                      return const SizedBox.shrink();
+                    }
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -81,17 +84,17 @@ class _SetProfileCategoryTypeState extends State<SetProfileCategoryType> {
                                 color: AppColorConstants.mainTextColor,
                                 fontWeight: TextWeight.semiBold)),
                         Obx(() => ThemeIconWidget(
-                              _setProfileCategoryController
-                                          .profileCategoryType.value ==
-                                      category.id
-                                  ? ThemeIcon.checkMarkWithCircle
-                                  : ThemeIcon.circleOutline,
-                              color: _setProfileCategoryController
-                                          .profileCategoryType.value ==
-                                      category.id
-                                  ? AppColorConstants.themeColor
-                                  : AppColorConstants.iconColor,
-                            )),
+                          _setProfileCategoryController
+                              .profileCategoryType.value ==
+                              category.id
+                              ? ThemeIcon.checkMarkWithCircle
+                              : ThemeIcon.circleOutline,
+                          color: _setProfileCategoryController
+                              .profileCategoryType.value ==
+                              category.id
+                              ? AppColorConstants.themeColor
+                              : AppColorConstants.iconColor,
+                        )),
                       ],
                     ).ripple(() {
                       _setProfileCategoryController
@@ -101,12 +104,35 @@ class _SetProfileCategoryTypeState extends State<SetProfileCategoryType> {
                   separatorBuilder: (ctx, index) {
                     return const SizedBox(height: 20);
                   }))),
+          BodySmallText(
+            "If you are not an athlete or a scout, select skip to continue",
+            textAlign: TextAlign.center,
+            weight: TextWeight.medium,
+          ).hp(DesignConstants.horizontalPadding),
+          TextButton(onPressed: (){
+
+            CategoryModel? foundCategory = _setProfileCategoryController.categories.firstWhere(
+                  (category) => category.name == "User",
+
+            );
+            _setProfileCategoryController
+                .setProfileCategoryType(foundCategory.id);
+            profileController.updateProfileCategoryType(
+              profileCategoryType:
+              foundCategory,
+              isSigningUp: true,
+            );
+          }, child: const Text("Skip",style: TextStyle(fontWeight:FontWeight.bold))),
+          const Spacer(),
           AppThemeButton(
               text: submitString.tr,
               onPress: () {
+                CategoryModel? foundCategory = _setProfileCategoryController.categories.firstWhere(
+                      (category) => category.id ==  _setProfileCategoryController.profileCategoryType.value,
+                );
                 profileController.updateProfileCategoryType(
                   profileCategoryType:
-                      _setProfileCategoryController.profileCategoryType.value,
+                  foundCategory,
                   isSigningUp: true,
                 );
               }).hp(DesignConstants.horizontalPadding),

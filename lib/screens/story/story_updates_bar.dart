@@ -2,6 +2,8 @@ import 'package:foap/components/thumbnail_view.dart';
 import 'package:foap/helper/imports/common_import.dart';
 import 'package:foap/helper/imports/story_imports.dart';
 
+import '../../controllers/profile/profile_controller.dart';
+
 double storyCircleSize = 50;
 
 class StoryUpdatesBar extends StatelessWidget {
@@ -23,87 +25,105 @@ class StoryUpdatesBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.only(right: DesignConstants.horizontalPadding),
-      scrollDirection: Axis.horizontal,
-      itemCount: stories.length + liveUsers.length + 1,
-      itemBuilder: (BuildContext ctx, int index) {
-        if (index == 0) {
-          return SizedBox(
-            width: storyCircleSize + 20,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: storyCircleSize,
-                  width: storyCircleSize,
-                  child: ThemeIconWidget(
-                    ThemeIcon.plusSymbol,
-                    size: 28,
-                    color: AppColorConstants.themeColor.darken(),
+    final ProfileController _profileController = Get.find();
+    return Obx(
+      () => ListView.builder(
+        padding: EdgeInsets.only(right: DesignConstants.horizontalPadding),
+        scrollDirection: Axis.horizontal,
+        itemCount: stories.length + liveUsers.length + 1,
+        itemBuilder: (BuildContext ctx, int index) {
+          if (index == 0) {
+            return SizedBox(
+              width: storyCircleSize + 20,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: storyCircleSize,
+                    width: storyCircleSize,
+                    child: ThemeIconWidget(
+                      ThemeIcon.plusSymbol,
+                      size: 28,
+                      color: AppColorConstants.themeColor.darken(),
+                    ),
+                  ).borderWithRadius(value: 2, radius: 50).ripple(() {
+                    if (_profileController
+                                .user.value!.profileCategoryTypeName !=
+                            "User" &&
+                        _profileController
+                                .user.value!.profileCategoryTypeName !=
+                            "Other") {
+                      addStoryCallback();
+                    } else {
+                      AppUtil.showToast(
+                          message:
+                              "Your category type does not have permission to upload status, Please signup as a Scout or Athlete.",
+                          isSuccess: false);
+                    }
+                  }),
+                  const SizedBox(
+                    height: 2,
                   ),
-                ).borderWithRadius(value: 2, radius: 50).ripple(() {
-                  addStoryCallback();
-                }),
-                const SizedBox(
-                  height: 2,
-                ),
-                BodySmallText(yourStoryString.tr, weight: TextWeight.medium)
-              ],
-            ),
-          );
-        } else {
-          if (index <= liveUsers.length) {
-            return SizedBox(
-                width: 100,
-                child: Column(
-                  children: [
-                    UserAvatarView(
-                      size: storyCircleSize,
-                      user: liveUsers[index - 1],
-                      onTapHandler: () {
-                        joinLiveUserCallback(liveUsers[index - 1]);
-                      },
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Expanded(
-                        child: BodySmallText(liveUsers[index - 1].userName,
-                                maxLines: 1, weight: TextWeight.medium)
-                            .hP4)
-                  ],
-                ));
+                  BodySmallText(yourStoryString.tr, weight: TextWeight.medium)
+                ],
+              ),
+            );
           } else {
-            return SizedBox(
-                width: storyCircleSize + 20,
-                child: Column(
-                  children: [
-                    MediaThumbnailView(
-                      borderColor:
-                          stories[index - liveUsers.length - 1].isViewed == true
-                              ? AppColorConstants.disabledColor
-                              : AppColorConstants.themeColor,
-                      media: stories[index - liveUsers.length - 1].media.last,
-                    ).ripple(() {
-                      viewStoryCallback(stories[index - liveUsers.length - 1]);
-                    }).ripple(() {
-                      viewStoryCallback(stories[index - liveUsers.length - 1]);
-                    }),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Expanded(
-                      child: BodySmallText(
-                              stories[index - liveUsers.length - 1].userName,
-                              maxLines: 1,
-                              weight: TextWeight.medium)
-                          .hP4,
-                    ),
-                  ],
-                ));
+            if (index <= liveUsers.length) {
+              return SizedBox(
+                  width: 100,
+                  child: Column(
+                    children: [
+                      UserAvatarView(
+                        size: storyCircleSize,
+                        user: liveUsers[index - 1],
+                        onTapHandler: () {
+                          joinLiveUserCallback(liveUsers[index - 1]);
+                        },
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Expanded(
+                          child: BodySmallText(liveUsers[index - 1].userName,
+                                  maxLines: 1, weight: TextWeight.medium)
+                              .hP4)
+                    ],
+                  ));
+            } else {
+              return SizedBox(
+                  width: storyCircleSize + 20,
+                  child: Column(
+                    children: [
+                      MediaThumbnailView(
+                        borderColor:
+                            stories[index - liveUsers.length - 1].isViewed ==
+                                    true
+                                ? AppColorConstants.disabledColor
+                                : AppColorConstants.themeColor,
+                        media: stories[index - liveUsers.length - 1].media.last,
+                      ).ripple(() {
+                        viewStoryCallback(
+                            stories[index - liveUsers.length - 1]);
+                      }).ripple(() {
+                        viewStoryCallback(
+                            stories[index - liveUsers.length - 1]);
+                      }),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Expanded(
+                        child: BodySmallText(
+                                stories[index - liveUsers.length - 1].userName,
+                                maxLines: 1,
+                                weight: TextWeight.medium)
+                            .hP4,
+                      ),
+                    ],
+                  ));
+            }
           }
-        }
-      },
+        },
+      ),
     );
   }
 }

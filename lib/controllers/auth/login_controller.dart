@@ -2,6 +2,7 @@ import 'package:foap/screens/add_on/ui/dating/profile/set_location.dart';
 import 'package:foap/helper/imports/common_import.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../api_handler/apis/auth_api.dart';
+import '../../screens/login_sign_up/set_profile_category_type.dart';
 import '../../screens/login_sign_up/verify_phone_login_otp.dart';
 import '../../util/shared_prefs.dart';
 import 'dart:async';
@@ -296,7 +297,7 @@ class LoginController extends GetxController {
               //   isLoginFirstTime = true;
               //   Get.offAll(() => const SetUserName());
               // } else {
-              Get.to(() => const DashboardScreen());
+              Get.to(()=>const SetProfileCategoryType(isFromSignup: true,));
               // }
             }
           });

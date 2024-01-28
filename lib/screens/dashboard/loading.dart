@@ -3,9 +3,13 @@ import 'package:foap/helper/imports/common_import.dart';
 import 'package:foap/helper/imports/login_signup_imports.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
 import 'package:local_auth/local_auth.dart';
+import '../../controllers/misc/request_verification_controller.dart';
 import '../../controllers/misc/subscription_packages_controller.dart';
+import '../../controllers/profile/profile_controller.dart';
 import '../../manager/socket_manager.dart';
 import '../../util/shared_prefs.dart';
+import '../login_sign_up/set_profile_category_type.dart';
+import '../settings_menu/account_verification/request_verification.dart';
 import 'dashboard_screen.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -19,6 +23,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
   final UserProfileManager _userProfileManager = Get.find();
   final SubscriptionPackageController packageController = Get.find();
 
+  final RequestVerificationController _requestVerificationController =
+  RequestVerificationController();
+
+  final ProfileController _profileController = Get.find();
   late bool haveBiometricLogin = false;
   var localAuth = LocalAuthentication();
   RxInt bioMetricType = 0.obs;
@@ -28,8 +36,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.initState();
   }
 
+
+
   openNextScreen() {
     if (_userProfileManager.isLogin == true) {
+      _profileController.getMyProfile();
+       _requestVerificationController.getVerificationRequests();
       packageController.initiate();
       Get.offAll(() => const DashboardScreen());
       getIt<SocketManager>().connect();

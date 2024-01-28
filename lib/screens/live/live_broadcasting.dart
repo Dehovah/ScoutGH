@@ -819,10 +819,10 @@ class _LiveBroadcastScreenState extends State<LiveBroadcastScreen>
         const SizedBox(
           height: 50,
         ),
-        Expanded(
-            child: GiftSenders(
-          liveId: _agoraLiveController.live.value!.id,
-        ))
+        // Expanded(
+        //     child: GiftSenders(
+        //   liveId: _agoraLiveController.live.value!.id,
+        // ))
       ],
     );
   }
@@ -874,45 +874,45 @@ class _LiveBroadcastScreenState extends State<LiveBroadcastScreen>
           const SizedBox(
             height: 40,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: (Get.width / 1.4) / 2.5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Heading4Text('${_agoraLiveController.giftsReceived.length}',
-                            weight: TextWeight.medium)
-                        .bP8,
-                    BodySmallText(
-                      giftsString.tr,
-                      weight: TextWeight.bold,
-                      color: AppColorConstants.themeColor,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: (Get.width / 1.4) / 2.5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Heading4Text(
-                            _agoraLiveController.totalCoinsEarned.toString(),
-                            weight: TextWeight.medium)
-                        .bP8,
-                    BodySmallText(
-                      coinsEarnedString.tr,
-                      weight: TextWeight.bold,
-                      color: AppColorConstants.themeColor,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     SizedBox(
+          //       width: (Get.width / 1.4) / 2.5,
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.center,
+          //         children: [
+          //           Heading4Text('${_agoraLiveController.giftsReceived.length}',
+          //                   weight: TextWeight.medium)
+          //               .bP8,
+          //           BodySmallText(
+          //             giftsString.tr,
+          //             weight: TextWeight.bold,
+          //             color: AppColorConstants.themeColor,
+          //             textAlign: TextAlign.center,
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //     SizedBox(
+          //       width: (Get.width / 1.4) / 2.5,
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.center,
+          //         children: [
+          //           Heading4Text(
+          //                   _agoraLiveController.totalCoinsEarned.toString(),
+          //                   weight: TextWeight.medium)
+          //               .bP8,
+          //           BodySmallText(
+          //             coinsEarnedString.tr,
+          //             weight: TextWeight.bold,
+          //             color: AppColorConstants.themeColor,
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ],
+          // )
         ],
       ).p16,
     ).round(20);

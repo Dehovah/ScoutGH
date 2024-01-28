@@ -10,6 +10,8 @@ import 'package:foap/model/data_wrapper.dart';
 import '../../api_handler/apis/auth_api.dart';
 import '../../api_handler/apis/post_api.dart';
 import '../../api_handler/apis/users_api.dart';
+import '../../model/category_model.dart';
+import '../../screens/settings_menu/account_verification/request_verification.dart';
 import '../../util/shared_prefs.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
@@ -87,6 +89,8 @@ class ProfileController extends GetxController {
     await _userProfileManager.refreshProfile();
     user.value = _userProfileManager.user.value!;
     update();
+
+
   }
 
   setUser(UserModel userObj) {
@@ -239,13 +243,13 @@ class ProfileController extends GetxController {
   }
 
   updateProfileCategoryType({
-    required int profileCategoryType,
+    required CategoryModel profileCategoryType,
     required isSigningUp,
   }) {
     Loader.show(status: loadingString.tr);
 
     ProfileApi.updateProfileCategoryType(
-        categoryType: profileCategoryType,
+        categoryType: profileCategoryType.id,
         resultCallback: () {
           Loader.dismiss();
           AppUtil.showToast(
@@ -258,10 +262,14 @@ class ProfileController extends GetxController {
             // } else {
             isLoginFirstTime = false;
             getIt<LocationManager>().postLocation();
-            Get.offAll(() => const DashboardScreen());
+            if(profileCategoryType.name != "User"){
+              Get.to(() => RequestVerification());
+            }else {
+              Get.offAll(() => const DashboardScreen());
+            }
             // }
           } else {
-            Future.delayed(const Duration(milliseconds: 1200), () {
+            Future.delayed(const Duration(milliseconds: 700), () {
               Get.back();
             });
           }

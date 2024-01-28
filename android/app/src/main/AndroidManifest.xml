@@ -4,7 +4,7 @@
 
     <application
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         android:label="ScoutGH"
         android:requestLegacyExternalStorage="true"
         tools:replace="android:label">

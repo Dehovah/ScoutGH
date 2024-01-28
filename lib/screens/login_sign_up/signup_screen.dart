@@ -15,6 +15,8 @@ class SignUpScreen extends StatefulWidget {
 class SignUpScreenState extends State<SignUpScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
+  TextEditingController name = TextEditingController();
   SettingsController settingsController = Get.find();
 
   String countryCode = '+1';
@@ -63,8 +65,16 @@ class SignUpScreenState extends State<SignUpScreen> {
                         ))
                   ],
                 )),
+                SizedBox(
+                  height: Get.height * 0.05,
+                ),
+                AppTextField(
+                  icon: ThemeIcon.name,
+                  controller: name,
+                  hintText: nameString,
+                ),
             SizedBox(
-              height: Get.height * 0.05,
+              height: Get.height * 0.015,
             ),
             AppTextField(
               icon: ThemeIcon.email,
@@ -169,9 +179,11 @@ class SignUpScreenState extends State<SignUpScreen> {
             },
             okHandler: () {
               loginController.register(
-                name: widget.userName,
+                name: name.text,
+                userName: widget.userName,
                 email: email.text,
                 password: password.text,
+
               );
             });
       },

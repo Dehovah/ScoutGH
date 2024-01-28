@@ -45,9 +45,9 @@ class _SettingsState extends State<Settings> {
                           addTileEvent(changeLanguageString.tr, () {
                             Get.to(() => const ChangeLanguage());
                           }, true),
-                          addTileEvent(paymentAndCoinsString.tr, () {
-                            Get.to(() => const PaymentAndCoins());
-                          }, true),
+                          // addTileEvent(paymentAndCoinsString.tr, () {
+                          //   Get.to(() => const PaymentAndCoins());
+                          // }, true),
                           addTileEvent(accountString.tr, () {
                             Get.to(() => const AppAccount());
                           }, true),
