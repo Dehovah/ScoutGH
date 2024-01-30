@@ -13,13 +13,13 @@ class ChangePhoneNumberState extends State<ChangePhoneNumber> {
   final ProfileController profileController = Get.find();
   final UserProfileManager _userProfileManager = Get.find();
 
-  String countryCode = "+1";
+  String countryCode = "+233";
 
   @override
   void initState() {
     super.initState();
     phoneNumber.text = _userProfileManager.user.value!.phone ?? '';
-    countryCode = _userProfileManager.user.value!.countryCode ?? '+1';
+    countryCode = _userProfileManager.user.value!.countryCode ?? '+233';
   }
 
   @override

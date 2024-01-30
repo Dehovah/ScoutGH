@@ -40,9 +40,9 @@ class _ContactDetailState extends State<ContactDetail> {
                     height: 25,
                   ),
                   AppMobileTextField(
-                          hintText: '1234567899',
+                          hintText: '0200000000',
                           label: phoneNumberString.tr,
-                          countryCodeText: '+1',
+                          countryCodeText: '+233',
                           controller: phone,
                           onChanged: (value) {
                             widget.adModel.phone = value;

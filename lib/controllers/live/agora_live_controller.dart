@@ -254,8 +254,8 @@ class AgoraLiveController extends GetxController {
       'liveCallId': this.live.value!.id,
     });
 
-    // _joinLive(live: live);
-    // Get.to(() => const LiveBroadcastScreen());
+    _joinLive(live: live);
+    Get.to(() => const LiveBroadcastScreen());
   }
 
   _joinLive({required Live live}) {

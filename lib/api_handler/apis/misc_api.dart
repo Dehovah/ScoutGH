@@ -36,9 +36,9 @@ class MiscApi {
 
   static postPollAnswer(
       {required int pollId,
-      // required int pollQuestionId,
-      required int questionOptionId,
-      required Function(List<PollsModel>) resultCallback}) async {
+        // required int pollQuestionId,
+        required int questionOptionId,
+        required Function(List<PollsModel>) resultCallback}) async {
     var url = NetworkConstantsUtil.postPoll;
 
     await ApiWrapper().postApi(url: url, param: {
@@ -59,7 +59,7 @@ class MiscApi {
 
   static getNotifications(
       {required Function(List<NotificationModel>, APIMetaData)
-          resultCallback}) async {
+      resultCallback}) async {
     var url = NetworkConstantsUtil.getNotifications;
 
     await ApiWrapper().getApi(url: url).then((result) {
@@ -75,8 +75,8 @@ class MiscApi {
 
   static getFollowRequests(
       {required int page,
-      required Function(List<FollowRequestModel>, APIMetaData)
-          resultCallback}) async {
+        required Function(List<FollowRequestModel>, APIMetaData)
+        resultCallback}) async {
     var url = '${NetworkConstantsUtil.followRequests}&page=$page';
 
     await ApiWrapper().getApi(url: url).then((result) {
@@ -106,8 +106,8 @@ class MiscApi {
 
   static updateNotificationSettings(
       {required String likesNotificationStatus,
-      required String commentNotificationStatus,
-      required VoidCallback resultCallback}) async {
+        required String commentNotificationStatus,
+        required VoidCallback resultCallback}) async {
     var url = NetworkConstantsUtil.notificationSettings;
     await ApiWrapper().postApi(url: url, param: {
       "like_push_notification_status": likesNotificationStatus,
@@ -130,9 +130,9 @@ class MiscApi {
 
   static sendSupportRequest(
       {required String name,
-      required String email,
-      required String phone,
-      required String message}) async {
+        required String email,
+        required String phone,
+        required String message}) async {
     var url = NetworkConstantsUtil.submitRequest;
     dynamic param = {
       "name": name,
@@ -147,7 +147,7 @@ class MiscApi {
 
   static getSupportMessages(
       {required Function(List<SupportRequest>, APIMetaData)
-          resultCallback}) async {
+      resultCallback}) async {
     var url = NetworkConstantsUtil.supportRequests;
 
     await ApiWrapper().getApi(url: url).then((result) {
@@ -161,7 +161,7 @@ class MiscApi {
 
   static getSupportMessageView(int id) async {
     var url =
-        NetworkConstantsUtil.supportRequestView.replaceAll('id', id.toString());
+    NetworkConstantsUtil.supportRequestView.replaceAll('id', id.toString());
 
     await ApiWrapper().getApi(url: url).then((result) {
       if (result?.success == true) {}
@@ -170,8 +170,8 @@ class MiscApi {
 
   static searchHashtag(
       {required String hashtag,
-      required int page,
-      required Function(List<Hashtag>) resultCallback}) async {
+        required int page,
+        required Function(List<Hashtag>) resultCallback}) async {
     var url = '${NetworkConstantsUtil.searchHashtag}$hashtag&page=$page';
 
     await ApiWrapper().getApi(url: url).then((result) {
@@ -198,16 +198,16 @@ class MiscApi {
 
   static Future uploadFile(String filePath,
       {required UploadMediaType type,
-      required GalleryMediaType mediaType,
-      required Function(String, String) resultCallback}) async {
+        required GalleryMediaType mediaType,
+        required Function(String, String) resultCallback}) async {
     Loader.show(status: loadingString.tr);
 
     await ApiWrapper()
         .uploadFile(
-            url: NetworkConstantsUtil.uploadFileImage,
-            file: filePath,
-            mediaType: mediaType,
-            type: type)
+        url: NetworkConstantsUtil.uploadFileImage,
+        file: filePath,
+        mediaType: mediaType,
+        type: type)
         .then((result) {
       Loader.dismiss();
       if (result?.success == true) {

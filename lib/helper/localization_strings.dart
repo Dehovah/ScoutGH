@@ -138,15 +138,15 @@ String pleaseEnterOneTimePasswordString =
     "Please enter the one time password sent to your email to verify your account and change your password";
 
 String pleaseEnterOneTimePasswordPhoneNumberChangeString =
-    "Please enter the one time password sent to your phone number to verify your phone number";
+    "Please enter the one time password sent to your device to verify your account";
 
 String helpToGetAccountString = "Let’s help you get back your account";
 String loginUsingAnotherAccountString = "Login another account instead";
 
 String pleaseEnterOtpSentToYourPhoneString =
-    "Please enter the one time password sent to your phone number to verify your phone number";
+    "Please enter the one time password sent to your device to verify your account";
 
-String helpToChangePhoneNumberString = "Let’s help you to change phone number";
+String helpToChangePhoneNumberString = "Let’s help you to verify phone number";
 
 String kindlyEnterEmailString = "Kindly fill in your email address";
 
@@ -217,7 +217,7 @@ String passwordsDoesNotMatchedString = 'Passwords do not match';
 String createAccountForTopPicksString =
     'Create an account to our top picks for you!';
 String pleaseEnterUserNameString = 'Please enter user name';
-String pleaseEnterValidUserNameString = 'Please enter valid user name';
+String pleaseEnterValidUserNameString = 'Username is taken or invalid';
 String userNameCanNotHaveSpaceString = 'Username can not have spaces';
 
 String enterNewPasswordString = 'Enter new password';

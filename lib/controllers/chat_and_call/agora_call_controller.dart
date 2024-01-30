@@ -257,12 +257,13 @@ class AgoraCallController extends GetxController {
     }
   }
 
-  incomingCallReceived(Map<String, dynamic> updatedData) {
+  incomingCallReceived(Map<String, dynamic> updatedData) async {
     // int id = updatedData['id'];
     int callType = updatedData['callType'];
     String userImage = updatedData['userImage'];
     String username = updatedData['username'];
     int callerId = updatedData['callerId'];
+
     // String channelName = updatedData['channelName'];
     // String agoraToken = updatedData['token'];
 
@@ -294,7 +295,10 @@ class AgoraCallController extends GetxController {
       // Get.to(() => VideoCallingScreen(
       //       call: call,
       //     ));
+
     }
+    player.setAsset('assets/ringtone.mp3');
+    player.play();
   }
 
   void acceptCall({required Call call}) {

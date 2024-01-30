@@ -472,7 +472,7 @@ class _RoundedInputMobileNumberFieldState
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             BodyMediumText(
-                              widget.countryCodeText ?? "+1",
+                              widget.countryCodeText ?? "+233",
                               // style: TextStyles.body,
                             ).lP8,
                             Icon(

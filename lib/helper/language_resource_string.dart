@@ -100,13 +100,13 @@ class LanguageStrings {
     "Wrong OTP, please enter the correct OTP":
         "Yanlış OTP, lütfen doğru OTP'yi girin",
     "Resend OTP": "OTP'yi yeniden gönder",
-    "Please enter the one time password sent to your email or phone number to verify your account and change your password":
+    "Please enter the one time password sent to your device to verify your account and change your password":
         "Hesabınızı doğrulamak ve şifrenizi değiştirmek için lütfen e-postanıza veya telefon numaranıza gönderilen tek kullanımlık şifreyi girin.",
     "Let’s help you get back your account":
         "Hesabınızı geri almanıza yardımcı olalım",
     "Login another account instead":
         "Bunun yerine başka bir hesapta oturum açın",
-    "Please enter the one time password sent to your phone number to verify your phone number":
+    "Please enter the one time password sent to your device to verify your account":
         "Telefon numaranızı doğrulamak için lütfen telefon numaranıza gönderilen tek kullanımlık şifreyi giriniz.",
     "Let’s help you to change phone number":
         "Telefon numarasını değiştirmenize yardımcı olalım",
@@ -725,8 +725,8 @@ class LanguageStrings {
     "Let’s help you get back your account":
         "Let’s help you get back your account",
     "Login another account instead": "Login another account instead",
-    "Please enter the one time password sent to your phone number to verify your phone number":
-        "Please enter the one time password sent to your phone number to verify your phone number",
+    "Please enter the one time password sent to your device to verify your account":
+        "Please enter the one time password sent to your device to verify your account",
     "Let’s help you to change phone number":
         "Let’s help you to change phone number",
     "Kindly fill in your email address": "Kindly fill in your email address",
@@ -774,7 +774,7 @@ class LanguageStrings {
     "Create an account to our top picks for you!":
         "Create an account to our top picks for you!",
     "Please enter user name": "Please enter user name",
-    "Please enter valid user name": "Please enter valid user name",
+    "Please enter valid user name": "Username is taken or invalid",
     "Enter new password": "Enter new password",
     "Enter confirm password": "Enter confirm password",
     "Enter old password": "Enter old password",
@@ -1340,7 +1340,7 @@ class LanguageStrings {
         "يرجى إدخال كلمة المرور لمرة واحدة المرسلة إلى بريدك الإلكتروني أو رقم هاتفك للتحقق من حسابك وتغيير كلمة المرور الخاصة بك",
     "Let’s help you get back your account": "دعنا نساعدك في استعادة حسابك",
     "Login another account instead": "تسجيل الدخول إلى حساب آخر بدلا من ذلك",
-    "Please enter the one time password sent to your phone number to verify your phone number":
+    "Please enter the one time password sent to your device to verify your account":
         "يرجى إدخال كلمة المرور المرسلة لمرة واحدة إلى رقم هاتفك للتحقق من رقم هاتفك",
     "Let’s help you to change phone number": "دعنا نساعدك على تغيير رقم الهاتف",
     "Kindly fill in your email address": "يرجى ملء عنوان بريدك الإلكتروني",
@@ -1949,7 +1949,7 @@ class LanguageStrings {
     "Let’s help you get back your account":
         "आइए, आपका खाता वापस पाने में आपकी सहायता करते हैं",
     "Login another account instead": "इसके बजाय दूसरे खाते में लॉग इन करें",
-    "Please enter the one time password sent to your phone number to verify your phone number":
+    "Please enter the one time password sent to your device to verify your account":
         "अपना फ़ोन नंबर सत्यापित करने के लिए कृपया आपके फ़ोन नंबर पर भेजा गया वन टाइम पासवर्ड दर्ज करें",
     "Let’s help you to change phone number":
         "फ़ोन नंबर बदलने में आपकी मदद करते हैं",
@@ -2567,7 +2567,7 @@ class LanguageStrings {
     "Let’s help you get back your account": "Поможем вернуть ваш аккаунт",
     "Login another account instead":
         "Вместо этого войдите в другую учетную запись",
-    "Please enter the one time password sent to your phone number to verify your phone number":
+    "Please enter the one time password sent to your device to verify your account":
         "Пожалуйста, введите одноразовый пароль, отправленный на ваш номер телефона, чтобы подтвердить свой номер телефона",
     "Let’s help you to change phone number": "Поможем сменить номер телефона",
     "Kindly fill in your email address":
@@ -3193,7 +3193,7 @@ class LanguageStrings {
         "Ingrese la contraseña de un solo uso enviada a su correo electrónico o número de teléfono para verificar su cuenta y cambiar su contraseña",
     "Let’s help you get back your account": "Te ayudamos a recuperar tu cuenta",
     "Login another account instead": "Inicie sesión en otra cuenta en su lugar",
-    "Please enter the one time password sent to your phone number to verify your phone number":
+    "Please enter the one time password sent to your device to verify your account":
         "Ingrese la contraseña de un solo uso enviada a su número de teléfono para verificar su número de teléfono",
     "Let’s help you to change phone number":
         "Vamos a ayudarle a cambiar el número de teléfono",
@@ -3808,7 +3808,7 @@ class LanguageStrings {
     "Please enter the one time password sent to your email or phone number to verify your account and change your password": "Veuillez saisir le mot de passe à usage unique envoyé à votre adresse e-mail ou à votre numéro de téléphone pour vérifier votre compte et modifier votre mot de passe",
     "Let’s help you get back your account": "Nous vous aidons à récupérer votre compte",
     "Login another account instead": "Connectez-vous à un autre compte à la place",
-    "Please enter the one time password sent to your phone number to verify your phone number": "Veuillez entrer le mot de passe à usage unique envoyé à votre numéro de téléphone pour vérifier votre numéro de téléphone",
+    "Please enter the one time password sent to your device to verify your account": "Veuillez entrer le mot de passe à usage unique envoyé à votre numéro de téléphone pour vérifier votre numéro de téléphone",
     "Let’s help you to change phone number": "Nous vous aidons à changer de numéro de téléphone",
     "Kindly fill in your email address": "Merci de renseigner votre adresse email",
     "If you didn’t receive code,": "Si vous n'avez pas reçu de code,",
@@ -4371,7 +4371,7 @@ class LanguageStrings {
     "Let’s help you get back your account":
     "Vamos ajudar você a recuperar sua conta",
     "Login another account instead": "Em vez disso, faça o login em outra conta",
-    "Please enter the one time password sent to your phone number to verify your phone number":
+    "Please enter the one time password sent to your device to verify your account":
     "Por favor, digite a senha enviada uma única vez para seu número de telefone para verificar seu número de telefone",
     "Let’s help you to change phone number":
     "Vamos ajudar você a mudar o número de telefone",

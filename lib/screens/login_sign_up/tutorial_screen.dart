@@ -13,10 +13,10 @@
 // class TutorialScreenState extends State<TutorialScreen> {
 //   int _current = 0;
 //   List<String> imgList = [
-//     "assets/tutorial1.jpg",
-//     "assets/tutorial2.jpg",
-//     "assets/tutorial3.jpg",
-//     "assets/tutorial4.jpg",
+//     "assets/stripe.png",
+//     "assets/stripe.png",
+//     "assets/stripe.png",
+//     "assets/stripe.png",
 //   ];
 //
 //   List<String> headings = ["Post", "Chat", "Calls", "Live"];

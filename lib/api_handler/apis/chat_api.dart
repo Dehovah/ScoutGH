@@ -101,8 +101,8 @@ class ChatApi {
         var room = result!.data['room'] as List<dynamic>?;
         if (room != null) {
           room = room
-              // .where((element) =>
-              //     (element['chatRoomUser'] as List<dynamic>).length > 1)
+              .where((element) =>
+                  (element['chatRoomUser'] as List<dynamic>).length > 1)
               .toList();
           resultCallback(
             List<ChatRoomModel>.from(

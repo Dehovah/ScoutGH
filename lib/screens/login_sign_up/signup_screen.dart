@@ -19,7 +19,7 @@ class SignUpScreenState extends State<SignUpScreen> {
   TextEditingController name = TextEditingController();
   SettingsController settingsController = Get.find();
 
-  String countryCode = '+1';
+  String countryCode = '+233';
   final LoginController loginController = Get.find();
 
   @override

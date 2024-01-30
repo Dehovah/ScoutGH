@@ -1435,6 +1435,7 @@ class ChatDetailController extends GetxController {
         return element;
       }).toList();
       messages.refresh();
+      update();
     }
 
     // delete media messages

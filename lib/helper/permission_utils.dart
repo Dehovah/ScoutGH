@@ -11,7 +11,7 @@ class PermissionUtils {
     required Function permissionDenied,
     required Function permissionNotAskAgain,
     bool isOpenSettings = false,
-    bool isShowMessage = false,
+    bool isShowMessage = true,
   }) async {
     Map<Permission, PermissionStatus> statuses = await permission.request();
 
