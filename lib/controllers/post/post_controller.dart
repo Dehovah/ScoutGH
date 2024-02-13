@@ -11,9 +11,7 @@ class PostController extends GetxController {
 
   RxList<PostModel> mentions = <PostModel>[].obs;
   RxList<UserModel> likedByUsers = <UserModel>[].obs;
-
   Rx<PostInsight?> insight = Rx<PostInsight?>(null);
-
   int totalPages = 100;
 
   DataWrapper postDataWrapper = DataWrapper();

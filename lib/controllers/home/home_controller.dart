@@ -2,6 +2,7 @@ import 'package:foap/api_handler/apis/gift_api.dart';
 import 'package:foap/api_handler/apis/live_streaming_api.dart';
 import 'package:foap/api_handler/apis/post_api.dart';
 import 'package:foap/api_handler/apis/story_api.dart';
+import 'package:foap/controllers/profile/profile_controller.dart';
 import 'package:foap/helper/imports/common_import.dart';
 import '../../api_handler/apis/misc_api.dart';
 import '../../manager/db_manager_realm.dart';
@@ -79,7 +80,17 @@ class HomeController extends GetxController {
   }
 
   loadQuickLinksAccordingToSettings() {
+    final ProfileController profileController = Get.find();
     quickLinks.clear();
+    if (profileController.user.value!.profileCategoryTypeName != "User" &&
+        profileController.user.value!.isVerified) {
+      quickLinks.add(QuickLink(
+          icon: 'assets/explore/story.png',
+          heading: "Post",
+          subHeading: "Make a post",
+          linkType: QuickLinkType.post));
+    }
+
     if (_settingsController.setting.value!.enableStories) {
       quickLinks.add(QuickLink(
           icon: 'assets/explore/story.png',

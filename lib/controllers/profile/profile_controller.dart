@@ -34,6 +34,7 @@ class ProfileController extends GetxController {
 
   DataWrapper transactionsDataWrapper = DataWrapper();
   Rx<UserModel?> user = Rx<UserModel?>(null);
+  Rx<UserModel?> otherUser = Rx<UserModel?>(null);
 
   int totalPages = 100;
 
@@ -89,8 +90,6 @@ class ProfileController extends GetxController {
     await _userProfileManager.refreshProfile();
     user.value = _userProfileManager.user.value!;
     update();
-
-
   }
 
   setUser(UserModel userObj) {
@@ -262,9 +261,9 @@ class ProfileController extends GetxController {
             // } else {
             isLoginFirstTime = false;
             getIt<LocationManager>().postLocation();
-            if(profileCategoryType.name != "User"){
+            if (profileCategoryType.name != "User") {
               Get.to(() => RequestVerification());
-            }else {
+            } else {
               Get.offAll(() => const DashboardScreen());
             }
             // }
@@ -410,8 +409,7 @@ class ProfileController extends GetxController {
     user.followingStatus =
         user.isPrivate ? FollowingStatus.requested : FollowingStatus.following;
     update();
-    UsersApi.followUnfollowUser(isFollowing: true, user: user)
-        .then((value) {
+    UsersApi.followUnfollowUser(isFollowing: true, user: user).then((value) {
       update();
     });
   }
@@ -420,8 +418,7 @@ class ProfileController extends GetxController {
     user.followingStatus = FollowingStatus.notFollowing;
 
     update();
-    UsersApi.followUnfollowUser(isFollowing: false, user: user)
-        .then((value) {
+    UsersApi.followUnfollowUser(isFollowing: false, user: user).then((value) {
       update();
     });
   }

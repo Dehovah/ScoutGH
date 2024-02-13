@@ -59,7 +59,7 @@ class RequestVerificationController extends GetxController {
     selectedImages.clear();
   }
 
-  getVerificationRequests() {
+  getVerificationRequests() async {
     ProfileApi.getVerificationRequestHistory(resultCallback: (result) {
       verificationRequests.value = result;
       verificationRequests.refresh();
@@ -121,7 +121,7 @@ class RequestVerificationController extends GetxController {
 
           clear();
           Timer(const Duration(seconds: 2), () {
-            Get.offAll(()=>DashboardScreen());
+            Get.offAll(() => DashboardScreen());
           });
         });
   }

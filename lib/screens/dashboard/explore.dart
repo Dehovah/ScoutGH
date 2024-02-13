@@ -6,6 +6,7 @@ import '../../controllers/post/post_controller.dart';
 import '../../segmentAndMenu/horizontal_menu.dart';
 import '../add_on/components/event/events_list.dart';
 import '../home_feed/quick_links.dart';
+import '../post/add_post_screen.dart';
 import '../reuseable_widgets/club_listing.dart';
 import '../reuseable_widgets/hashtags.dart';
 import '../reuseable_widgets/post_list.dart';

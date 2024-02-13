@@ -1,6 +1,8 @@
 import 'package:foap/helper/imports/common_import.dart';
 import 'package:foap/helper/imports/reel_imports.dart';
 
+import '../../../../controllers/profile/profile_controller.dart';
+
 class Reels extends StatefulWidget {
   final bool needBackBtn;
 
@@ -12,6 +14,7 @@ class Reels extends StatefulWidget {
 
 class _ReelsState extends State<Reels> {
   final ReelsController _reelsController = Get.find();
+  final ProfileController _profileController = Get.find();
 
   @override
   void initState() {
@@ -80,17 +83,21 @@ class _ReelsState extends State<Reels> {
                               }),
                             ).circular
                           : Container(),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        color: AppColorConstants.themeColor.withOpacity(0.5),
-                        child: ThemeIconWidget(
-                          ThemeIcon.camera,
-                          color: Colors.white,
-                        ).ripple(() {
-                          Get.to(() => const CreateReelScreen());
-                        }),
-                      ).circular,
+                      if (_profileController
+                                  .user.value!.profileCategoryTypeName !=
+                              "User" &&
+                          _profileController.user.value!.isVerified)
+                        Container(
+                          height: 40,
+                          width: 40,
+                          color: AppColorConstants.themeColor.withOpacity(0.5),
+                          child: ThemeIconWidget(
+                            ThemeIcon.camera,
+                            color: Colors.white,
+                          ).ripple(() {
+                            Get.to(() => const CreateReelScreen());
+                          }),
+                        ).circular,
                     ],
                   ))
             ],

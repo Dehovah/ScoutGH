@@ -7,9 +7,7 @@ class DataWrapper {
   RxBool haveMoreData = true.obs;
   RxBool isLoading = false.obs;
   RxInt totalRecords = 0.obs;
-
   DataWrapper();
-
   processCompletedWithData(APIMetaData metadata) {
     isLoading.value = false;
     haveMoreData.value = metadata.currentPage < metadata.pageCount;

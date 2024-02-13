@@ -24,7 +24,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   final SubscriptionPackageController packageController = Get.find();
 
   final RequestVerificationController _requestVerificationController =
-  RequestVerificationController();
+      RequestVerificationController();
 
   final ProfileController _profileController = Get.find();
   late bool haveBiometricLogin = false;
@@ -36,12 +36,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.initState();
   }
 
-
-
-  openNextScreen() {
+  openNextScreen() async {
     if (_userProfileManager.isLogin == true) {
-      _profileController.getMyProfile();
-       _requestVerificationController.getVerificationRequests();
+      await _profileController.getMyProfile();
+      await _requestVerificationController.getVerificationRequests();
       packageController.initiate();
       Get.offAll(() => const DashboardScreen());
       getIt<SocketManager>().connect();

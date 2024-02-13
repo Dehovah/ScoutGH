@@ -94,7 +94,7 @@ class _VideoPostTileState extends State<VideoPostTile> {
                     controller: ChewieController(
                       videoPlayerController: videoPlayerController!,
                       aspectRatio: videoPlayerController!.value.aspectRatio,
-                      showControls: false,
+                      showControls: true,
                       autoInitialize: true,
                       looping: false,
                       autoPlay: false,

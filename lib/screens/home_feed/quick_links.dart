@@ -11,6 +11,7 @@ import 'package:foap/screens/home_feed/story_uploader.dart';
 import 'package:foap/screens/jobs_listing/job_listing_dashboard.dart';
 import 'package:foap/screens/live/live_users_screen.dart';
 import 'package:foap/screens/near_by_offers/offers_dashboard.dart';
+import 'package:foap/screens/post/add_post_screen.dart';
 import '../../controllers/home/home_controller.dart';
 import '../../controllers/job/job_controller.dart';
 import '../add_on/ui/podcast/podcast_dashboard.dart';
@@ -43,7 +44,8 @@ enum QuickLinkType {
   fundRaising,
   offers,
   shop,
-  job
+  job,
+  post,
 }
 
 class QuickLink {
@@ -112,6 +114,8 @@ class _QuickLinkWidgetState extends State<QuickLinkWidget> {
                             isCalling: false,
                           ));
                     }
+                  } else if (link.linkType == QuickLinkType.post) {
+                    Get.to(() => const AddPostScreen(postType: PostType.basic));
                   } else if (link.linkType == QuickLinkType.randomCall) {
                     Get.to(() => const ChooseProfileCategory(
                           isCalling: true,

@@ -46,14 +46,14 @@ class OtherUserProfileState extends State<OtherUserProfile>
     super.initState();
     controller = TabController(vsync: this, length: tabs.length)
       ..addListener(() {});
-    initialLoad();
+    // initialLoad();
   }
 
   initialLoad() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.user != null) {
-        _profileController.setUser(widget.user!);
-      }
+      // if (widget.user != null) {
+      //   _profileController.setUser(widget.user!);
+      // }
       _profileController.clear();
       loadData();
     });
@@ -149,7 +149,7 @@ class OtherUserProfileState extends State<OtherUserProfile>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               UserAvatarView(
-                  user: _profileController.user.value!,
+                  user: widget.user!,
                   size: 85,
                   onTapHandler: () {
                     //open live
@@ -160,20 +160,19 @@ class OtherUserProfileState extends State<OtherUserProfile>
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Heading6Text(_profileController.user.value!.userName,
+                  Heading6Text(widget.user!.userName,
                       weight: TextWeight.medium),
-                  if (_profileController.user.value!.isVerified)
-                    verifiedUserTag()
+                  if (widget.user!.isVerified) verifiedUserTag()
                 ],
               ).bP4,
-              if (_profileController.user.value!.profileCategoryTypeId != 0)
+              if (widget.user!.profileCategoryTypeId != 0)
                 BodyLargeText(
                         _profileController.user.value!.profileCategoryTypeName,
                         weight: TextWeight.regular)
                     .bP4,
               if (_profileController.user.value?.country != null)
                 BodyMediumText(
-                  '${_profileController.user.value!.country},${_profileController.user.value!.city}',
+                  '${widget.user!.country},${widget.user!.city}',
                 ),
             ],
           ),

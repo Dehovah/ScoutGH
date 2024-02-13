@@ -17,6 +17,7 @@ import '../add_on/model/polls_model.dart';
 import '../dashboard/dashboard_screen.dart';
 import '../login_sign_up/set_profile_category_type.dart';
 import '../post/add_post_screen.dart';
+import '../settings_menu/settings.dart';
 import '../settings_menu/settings_controller.dart';
 
 class HomeFeedScreen extends StatefulWidget {
@@ -29,11 +30,11 @@ class HomeFeedScreen extends StatefulWidget {
 class HomeFeedState extends State<HomeFeedScreen> {
   final HomeController _homeController = Get.find();
   final AddPostController _addPostController = Get.find();
-  final  ProfileController _profileController = Get.find();
+  final ProfileController _profileController = Get.find();
   final AgoraLiveController _agoraLiveController = Get.find();
 
   final RequestVerificationController _requestVerificationController =
-  RequestVerificationController();
+      RequestVerificationController();
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   final SettingsController _settingsController = Get.find();
@@ -43,20 +44,20 @@ class HomeFeedState extends State<HomeFeedScreen> {
   String? selectedValue;
   int pollFrequencyIndex = 10;
 
-  void _checkUserStatus(){
-    if(_profileController.user.value!.profileCategoryTypeName == "Other") {
-      Get.to(()=>const SetProfileCategoryType(isFromSignup: false));
-    }else if(_profileController.user.value!.profileCategoryTypeName != "User" ){
+  void _checkUserStatus() {
+    if (_profileController.user.value!.profileCategoryTypeName == "Other") {
+      Get.to(() => const SetProfileCategoryType(isFromSignup: false));
+    } else if (_profileController.user.value!.profileCategoryTypeName !=
+        "User") {
       // print("Processing");
       // print(_requestVerificationController.verificationRequests.value);
       // print(_requestVerificationController.isVerificationInProcess);
       // print(_requestVerificationController.isApproved);
-      if(_requestVerificationController.isVerificationInProcess == false && _requestVerificationController.isApproved == false){
+      if (_requestVerificationController.isVerificationInProcess == false &&
+          _requestVerificationController.isApproved == false) {
         Get.to(() => const RequestVerification());
       }
     }
-
-
   }
 
   @override
@@ -67,16 +68,12 @@ class HomeFeedState extends State<HomeFeedScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       loadData();
       _homeController.loadQuickLinksAccordingToSettings();
-
     });
     _requestVerificationController.getVerificationRequests();
-    Future.delayed(Duration(seconds:15),(){
-
-        _checkUserStatus();
+    Future.delayed(Duration(seconds: 15), () {
+      _checkUserStatus();
     });
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   loadMore() {
@@ -129,34 +126,46 @@ class HomeFeedState extends State<HomeFeedScreen> {
             const SizedBox(
               height: 55,
             ),
-            Obx(()=>
-              Row(
+            Obx(
+              () => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Heading3Text(
-                    AppConfigConstants.appName,
-                    weight: TextWeight.semiBold,
-                    color: AppColorConstants.themeColor,
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const Settings());
+                    },
+                    child: UserAvatarView(
+                        user: _profileController.user.value!,
+                        size: 40,
+                        onTapHandler: () {}),
                   ),
+                  // Heading3Text(
+                  //   AppConfigConstants.appName,
+                  //   weight: TextWeight.semiBold,
+                  //   color: AppColorConstants.themeColor,
+                  // ),
                   const Spacer(),
-                  if(_profileController.user.value != null && _profileController.user.value!.profileCategoryTypeName != "User")
-                  SizedBox(
-                      height: 35,
-                      width: 35,
-                      child: ThemeIconWidget(
-                        ThemeIcon.plus,
-                        size: 25,
-                      )).ripple(() {
-                    Future.delayed(
-                      Duration.zero,
-                      () => showGeneralDialog(
-                          context: context,
-                          pageBuilder: (context, animation, secondaryAnimation) =>
-                              const AddPostScreen(
-                                postType: PostType.basic,
-                              )),
-                    );
-                  }),
+                  if (_profileController.user.value!.profileCategoryTypeName !=
+                          "User" &&
+                      _profileController.user.value!.isVerified)
+                    SizedBox(
+                        height: 35,
+                        width: 35,
+                        child: ThemeIconWidget(
+                          ThemeIcon.plus,
+                          size: 25,
+                        )).ripple(() {
+                      Future.delayed(
+                        Duration.zero,
+                        () => showGeneralDialog(
+                            context: context,
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    const AddPostScreen(
+                                      postType: PostType.basic,
+                                    )),
+                      );
+                    }),
                   const SizedBox(
                     width: 20,
                   ),
@@ -257,7 +266,7 @@ class HomeFeedState extends State<HomeFeedScreen> {
                           }),
                         ],
                       )
-                    : Container()
+                    : Container(),
               ],
             ).hP8,
           ).backgroundCard(radius: 10).bp(20)

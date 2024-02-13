@@ -15,7 +15,6 @@ import '../settings_menu/settings_controller.dart';
 import 'explore.dart';
 import 'package:foap/helper/imports/setting_imports.dart';
 
-
 class DashboardController extends GetxController {
   RxInt currentIndex = 0.obs;
   RxInt unreadMsgCount = 0.obs;
@@ -39,43 +38,40 @@ class DashboardScreen extends StatefulWidget {
 
 class DashboardState extends State<DashboardScreen> {
   final RequestVerificationController _requestVerificationController =
-  RequestVerificationController();
+      RequestVerificationController();
 
-  final  ProfileController _profileController = Get.find();
+  final ProfileController _profileController = Get.find();
   final DashboardController _dashboardController = Get.find();
   final SettingsController _settingsController = Get.find();
 
   List<Widget> widgets = [];
   bool hasPermission = false;
-  void _checkUserStatus(){
-    if(_profileController.user.value!.profileCategoryTypeName == "Other") {
-      Get.to(()=>const SetProfileCategoryType(isFromSignup: false));
-    }else if(_profileController.user.value!.profileCategoryTypeName != "User" ){
+  void _checkUserStatus() {
+    if (_profileController.user.value!.profileCategoryTypeName == "Other") {
+      Get.to(() => const SetProfileCategoryType(isFromSignup: false));
+    } else if (_profileController.user.value!.profileCategoryTypeName !=
+        "User") {
       // print("Processing");
       // print(_requestVerificationController.verificationRequests.value);
       // print(_requestVerificationController.isVerificationInProcess);
       // print(_requestVerificationController.isApproved);
-      if(!_requestVerificationController.isVerificationInProcess && !_requestVerificationController.isApproved){
+      if (!_requestVerificationController.isVerificationInProcess &&
+          !_requestVerificationController.isApproved) {
         Get.to(() => const RequestVerification());
       }
     }
-
-
   }
-
-
 
   @override
   void initState() {
-
     isAnyPageInStack = true;
 
     widgets = [
       const HomeFeedScreen(),
-      const Explore(),
       const Reels(
         needBackBtn: false,
       ),
+      const Explore(),
       const WatchVideos(),
       const MyProfile(
         showBack: false,
@@ -94,10 +90,10 @@ class DashboardState extends State<DashboardScreen> {
       icon: Icons.home_outlined,
     ),
     TabItem(
-      icon: Icons.search_sharp,
+      icon: Icons.play_arrow_outlined,
     ),
     TabItem(
-      icon: Icons.play_arrow_outlined,
+      icon: Icons.add,
     ),
     TabItem(
       icon: Icons.videocam_outlined,
